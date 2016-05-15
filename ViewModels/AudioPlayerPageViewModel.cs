@@ -142,6 +142,14 @@ namespace AudioPlayer.Portable.ViewModels
 			}
 		}
 
+		public string CurrentTimeStr
+		{
+			get
+			{
+				return TimeSpan.FromSeconds(this.CurrentTime).ToString("mm\\:ss");
+			}
+		}
+
 		public double CurrentTime
 		{
 			get
@@ -155,7 +163,17 @@ namespace AudioPlayer.Portable.ViewModels
 				{
 					currentTime = value;
 					RaisePropertyChanged(() => CurrentTime);
+					// everytime we change the current time, the time span values must also update
+					RaisePropertyChanged(() => CurrentTimeStr);
 				}
+			}
+		}
+
+		public string EndTimeStr
+		{
+			get
+			{
+				return TimeSpan.FromSeconds(this.EndTime).ToString("mm\\:ss");
 			}
 		}
 
@@ -172,6 +190,7 @@ namespace AudioPlayer.Portable.ViewModels
 				{
 					endTime = value;
 					RaisePropertyChanged(() => EndTime);
+					RaisePropertyChanged(() => EndTimeStr);
 				}
 			}
 		}
@@ -194,7 +213,7 @@ namespace AudioPlayer.Portable.ViewModels
 				// start/stop UI updates if the audio is not playing
 				if (soundHandler.IsPlaying)
 				{
-					this.Dispose();
+					this.updating = false;
 				}
 				else
 				{
@@ -209,7 +228,7 @@ namespace AudioPlayer.Portable.ViewModels
 				// set current time to the beginning
 				this.CurrentTime = 0;
 				this.soundHandler.Rewind();
-				this.Dispose();
+				this.updating = false;
 			});
 
 			this.forwardCommand = new MvxCommand(() =>
@@ -217,7 +236,7 @@ namespace AudioPlayer.Portable.ViewModels
 				// set current time to the end
 				this.CurrentTime = this.soundHandler.Duration();
 				this.soundHandler.Forward();
-				this.Dispose();
+				this.updating = false;
 			});
 		}
 

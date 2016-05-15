@@ -21,7 +21,7 @@ namespace AudioPlayer.iOS.Views
 	/// Main page.
 	/// </summary>
 	[MvxViewFor(typeof(MainPageViewModel))]
-	public partial class MainPage : MvxViewController
+	public class MainPage : MvxViewController
 	{
 		/// <summary>
 		/// Views the did load.

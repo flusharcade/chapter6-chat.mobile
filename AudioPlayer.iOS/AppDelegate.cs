@@ -18,9 +18,8 @@ namespace AudioPlayer.iOS
 	using AudioPlayer.iOS;
 	using AudioPlayer.iOS.Sound;
 
-	using AudioPlayer.Shared;
-
 	using AudioPlayer.Portable.Sound;
+	using AudioPlayer.Portable;
 
 	// The UIApplicationDelegate for the application. This class is responsible for launching the
 	// User Interface of the application, as well as listening (and optionally responding) to application events from iOS.
@@ -61,8 +60,7 @@ namespace AudioPlayer.iOS
 		private void setupIoC()
 		{
 			Mvx.RegisterType<ISoundHandler, SoundHandler>();
-
-			SharedMvxIoCRegistrations.InitIoC();
+			PortableMvxIoCRegistrations.InitIoC();
 		}
 	}
 }

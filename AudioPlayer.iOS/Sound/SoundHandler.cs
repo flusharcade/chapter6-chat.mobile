@@ -22,7 +22,6 @@ namespace AudioPlayer.iOS.Sound
 		public void Load()
 		{
 			this.audioPlayer = AVAudioPlayer.FromUrl(NSUrl.FromFilename("Moby - The Only Thing.mp3"));
-			//this.audioPlayer.NumberOfLoops = -1;
 		}
 
 		public void PlayPause()

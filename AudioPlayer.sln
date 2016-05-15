@@ -7,8 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AudioPlayer.Droid", "AudioP
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AudioPlayer.iOS", "AudioPlayer.iOS\AudioPlayer.iOS.csproj", "{CEB4EBE2-DC13-45FB-84F7-70E5BBACF4BD}"
 EndProject
-Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "AudioPlayer.Shared", "AudioPlayer.Shared\AudioPlayer.Shared.shproj", "{6AA7A440-31F2-4134-BE4B-96AE08DEF640}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

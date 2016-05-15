@@ -23,7 +23,7 @@ namespace AudioPlayer.iOS.Views
 	/// Main page.
 	/// </summary>
 	[MvxViewFor(typeof(AudioPlayerPageViewModel))]
-	public partial class AudioPlayerPage : MvxViewController
+	public class AudioPlayerPage : MvxViewController
 	{
 		/// <summary>
 		/// The play button.
@@ -77,7 +77,7 @@ namespace AudioPlayer.iOS.Views
 				TextAlignment = UITextAlignment.Center
 			};
 
-			var startLabel = new UILabel()
+			var currentLabel = new UILabel()
 			{
 				TranslatesAutoresizingMaskIntoConstraints = false,
 				TextAlignment = UITextAlignment.Left,
@@ -124,7 +124,7 @@ namespace AudioPlayer.iOS.Views
 				{"buttonView", buttonView},
 				{"imageView", imageView},
 				{"descriptionLabel", descriptionLabel},
-				{"startLabel", startLabel},
+				{"currentLabel", currentLabel},
 				{"endLabel", endLabel},
 				{"progressSlider", progressSlider},
 				{"playButton", playButton},
@@ -137,7 +137,7 @@ namespace AudioPlayer.iOS.Views
 			mainView.Add(imageView);
 			mainView.Add(descriptionLabel);
 			mainView.Add(buttonView);
-			mainView.Add(startLabel);
+			mainView.Add(currentLabel);
 			mainView.Add(endLabel);
 			mainView.Add(progressSlider);
 
@@ -151,11 +151,11 @@ namespace AudioPlayer.iOS.Views
 				.ToArray());
 
 			mainView.AddConstraints(
-				NSLayoutConstraint.FromVisualFormat("V:|-100-[imageView(200)]-[descriptionLabel(30)]-[buttonView(50)]-[startLabel(30)]-[progressSlider]", NSLayoutFormatOptions.DirectionLeftToRight, null, views)
+				NSLayoutConstraint.FromVisualFormat("V:|-100-[imageView(200)]-[descriptionLabel(30)]-[buttonView(50)]-[currentLabel(30)]-[progressSlider]", NSLayoutFormatOptions.DirectionLeftToRight, null, views)
 				.Concat(NSLayoutConstraint.FromVisualFormat("V:|-100-[imageView(200)]-[descriptionLabel(30)]-[buttonView(50)]-[endLabel(30)]-[progressSlider]", NSLayoutFormatOptions.DirectionLeftToRight, null, views))
 				.Concat(NSLayoutConstraint.FromVisualFormat("H:|-20-[progressSlider]-20-|", NSLayoutFormatOptions.AlignAllTop, null, views))
-				.Concat(NSLayoutConstraint.FromVisualFormat("H:|-25-[startLabel(70)]", NSLayoutFormatOptions.AlignAllTop, null, views))
-				.Concat(NSLayoutConstraint.FromVisualFormat("H:[endLabel(70)]-25-|", NSLayoutFormatOptions.AlignAllTop, null, views))
+				.Concat(NSLayoutConstraint.FromVisualFormat("H:|-25-[currentLabel(100)]", NSLayoutFormatOptions.AlignAllTop, null, views))
+				.Concat(NSLayoutConstraint.FromVisualFormat("H:[endLabel(100)]-25-|", NSLayoutFormatOptions.AlignAllTop, null, views))
 				.Concat(NSLayoutConstraint.FromVisualFormat("H:|-5-[descriptionLabel]-5-|", NSLayoutFormatOptions.AlignAllTop, null, views))
 				.Concat(NSLayoutConstraint.FromVisualFormat("H:|-5-[imageView]-5-|", NSLayoutFormatOptions.AlignAllTop, null, views))
 				.Concat(new[] { NSLayoutConstraint.Create(buttonView, NSLayoutAttribute.CenterX, NSLayoutRelation.Equal, mainView, NSLayoutAttribute.CenterX, 1, 0) })
@@ -172,8 +172,8 @@ namespace AudioPlayer.iOS.Views
 			var set = this.CreateBindingSet<AudioPlayerPage, AudioPlayerPageViewModel>();
 			set.Bind(this).For("Title").To(vm => vm.Title);
 			set.Bind(descriptionLabel).To(vm => vm.DescriptionMessage);
-			set.Bind(startLabel).To(vm => vm.CurrentTime);
-			set.Bind(endLabel).To(vm => vm.EndTime);
+			set.Bind(currentLabel).To(vm => vm.CurrentTimeStr);
+			set.Bind(endLabel).To(vm => vm.EndTimeStr);
 			set.Bind(progressSlider).For(v => v.Value).To(vm => vm.CurrentTime).TwoWay().Apply();
 			set.Bind(progressSlider).For(v => v.MaxValue).To(vm => vm.EndTime);
 			set.Bind(playButton).To(vm => vm.PlayPauseCommand);

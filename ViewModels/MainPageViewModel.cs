@@ -134,6 +134,7 @@ namespace AudioPlayer.Portable.ViewModels
 		{
 			this.exitCommand = new MvxCommand (() =>
 			{
+				// exit the application
 				Close(this);
 			});
 

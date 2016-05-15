@@ -122,7 +122,6 @@
     <Compile Include="Extras\DictionaryViews.cs" />
     <Compile Include="Sound\SoundHandler.cs" />
   </ItemGroup>
-  <Import Project="..\AudioPlayer.Shared\AudioPlayer.Shared.projitems" Label="Shared" Condition="Exists('..\AudioPlayer.Shared\AudioPlayer.Shared.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
     <ProjectReference Include="..\AudioPlayer.Portable.csproj">

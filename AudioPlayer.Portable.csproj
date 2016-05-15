@@ -36,6 +36,7 @@
     <Compile Include="Logging\DebugTrace.cs" />
     <Compile Include="ViewModels\AudioPlayerPageViewModel.cs" />
     <Compile Include="Sound\ISoundHandler.cs" />
+    <Compile Include="IoC\PortableMvxIoCRegistrations.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <ItemGroup>
@@ -58,7 +59,7 @@
   <ItemGroup>
     <Folder Include="ViewModels\" />
     <Folder Include="Logging\" />
-    <Folder Include="Helpers\" />
     <Folder Include="Sound\" />
+    <Folder Include="IoC\" />
   </ItemGroup>
 </Project>

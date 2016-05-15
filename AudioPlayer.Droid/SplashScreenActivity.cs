@@ -10,6 +10,7 @@ namespace AudioPlayer.Droid
 	using Android.OS;
 	using Android.Content.PM;
 	using Android.App;
+
 	using MvvmCross.Core.ViewModels;
 	using MvvmCross.Platform;
 	using MvvmCross.Droid.Views;
@@ -27,5 +28,3 @@ namespace AudioPlayer.Droid
 		}
 	}
 }
-
-
