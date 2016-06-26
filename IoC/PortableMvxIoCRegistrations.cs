@@ -4,19 +4,18 @@
 //  </copyright>
 // --------------------------------------------------------------------------------------------------
 
-namespace AudioPlayer.Portable
+namespace Chat.Portable
 {
 	using MvvmCross.Platform;
 
-	using AudioPlayer.Portable.ViewModels;
+	using Chat.Portable.ViewModels;
 
 	public static class PortableMvxIoCRegistrations
 	{
 		public static void InitIoC()
 		{
 			Mvx.IocConstruct<MainPageViewModel>();
-			Mvx.IocConstruct<AudioPlayerPageViewModel>();
+			Mvx.IocConstruct<ChatPageViewModel>();
 		}
 	}
 }
-

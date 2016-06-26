@@ -1,10 +1,10 @@
 ﻿// --------------------------------------------------------------------------------------------------
-//  <copyright file="AudioPlayerPageViewModel.cs" company="Flush Arcade.">
+//  <copyright file="ChatPageViewModel.cs" company="Flush Arcade.">
 //    Copyright (c) 2014 Flush Arcade. All rights reserved.
 //  </copyright>
 // --------------------------------------------------------------------------------------------------
 
-namespace AudioPlayer.Portable.ViewModels
+namespace Chat.Portable.ViewModels
 {
 	using MvvmCross.Core.ViewModels;
 
@@ -12,9 +12,9 @@ namespace AudioPlayer.Portable.ViewModels
 	using System.Threading.Tasks;
 	using System.Threading;
 
-	using AudioPlayer.Portable.Sound;
+	using Chat.Portable.Sound;
 
-	public class AudioPlayerPageViewModel : MvxViewModel
+	public class ChatPageViewModel : MvxViewModel
 	{
 		#region Private Properties
 
@@ -199,7 +199,7 @@ namespace AudioPlayer.Portable.ViewModels
 
 		#region Constructors
 
-		public AudioPlayerPageViewModel (ISoundHandler soundHandler)
+		public ChatPageViewModel (ISoundHandler soundHandler)
 		{
 			this.soundHandler = soundHandler;
 

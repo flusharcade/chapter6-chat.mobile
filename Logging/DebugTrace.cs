@@ -4,7 +4,7 @@
 //  </copyright>
 // --------------------------------------------------------------------------------------------------
 
-namespace AudioPlayer.Portable.Logging
+namespace Chat.Portable.Logging
 {
 	using System;
 	using System.Diagnostics;

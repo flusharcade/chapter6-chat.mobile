@@ -1,0 +1,17 @@
+﻿<Properties StartupItem="Chat.Droid/Chat.Droid.csproj">
+  <MonoDevelop.Ide.ItemProperties.Chat.Droid AndroidDesignerPreferredDevice="Nexus 4" PreferredExecutionTarget="Android.Android-Emulator" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Chat.iOS/Views/ChatViewController.cs">
+    <Files>
+      <File FileName="Chat.iOS/Views/ChatViewController.cs" Line="126" Column="4" />
+      <File FileName="Chat.iOS/Views/ClientsListViewController.cs" Line="56" Column="4" />
+      <File FileName="Chat.iOS/Services/NavigationService.cs" Line="51" Column="3" />
+      <File FileName="Chat.iOS/AppDelegate.cs" Line="41" Column="116" />
+      <File FileName="Chat.Common/Presenter/ChatPresenter.cs" Line="1" Column="1" />
+      <File FileName="Chat.iOS/Views/ChatBoxView.cs" Line="38" Column="73" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.Chat.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.4D94D0EF-12F5-45B6-83B6-58F50C2938C0" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>

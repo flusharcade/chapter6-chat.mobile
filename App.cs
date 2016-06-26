@@ -4,7 +4,7 @@
 //  </copyright>
 // --------------------------------------------------------------------------------------------------
 
-namespace AudioPlayer.Portable
+namespace Chat.Portable
 {
 	using System;
 
@@ -12,7 +12,7 @@ namespace AudioPlayer.Portable
 
 	using MvvmCross.Platform.IoC;
 
-	using AudioPlayer.Portable.ViewModels;
+	using Chat.Portable.ViewModels;
 
     public class App : MvxApplication
     {

@@ -4,7 +4,7 @@
 //  </copyright>
 // --------------------------------------------------------------------------------------------------
 
-namespace AudioPlayer.Portable.Sound
+namespace Chat.Portable.Sound
 {
 	using System;
 	using System.Diagnostics;

@@ -4,7 +4,7 @@
 //  </copyright>
 // --------------------------------------------------------------------------------------------------
 
-namespace AudioPlayer.Portable.ViewModels
+namespace Chat.Portable.ViewModels
 {
 	using MvvmCross.Core.ViewModels;
 
@@ -16,11 +16,11 @@ namespace AudioPlayer.Portable.ViewModels
 
 		private string descriptionMessage = "Welcome to the Music Room";
 
-		private string audioPlayerTitle = "Audio Player";
+		private string ChatTitle = "Audio Player";
 
 		private string exitTitle = "Exit";
 
-		private MvxCommand audioPlayerCommand;
+		private MvxCommand ChatCommand;
 
 		private MvxCommand exitCommand;
 
@@ -60,18 +60,18 @@ namespace AudioPlayer.Portable.ViewModels
 			}
 		}
 
-		public string AudioPlayerTitle
+		public string ChatTitle
 		{
 			get 
 			{ 
-				return audioPlayerTitle; 
+				return ChatTitle; 
 			} 
 			set 
 			{ 
-				if (!value.Equals(audioPlayerTitle))
+				if (!value.Equals(ChatTitle))
 				{
-					audioPlayerTitle = value;
-					RaisePropertyChanged (() => AudioPlayerTitle);
+					ChatTitle = value;
+					RaisePropertyChanged (() => ChatTitle);
 				}
 			}
 		}
@@ -92,19 +92,19 @@ namespace AudioPlayer.Portable.ViewModels
 			}
 		}
 
-		public MvxCommand AudioPlayerCommand
+		public MvxCommand ChatCommand
 		{
 			get
 			{
-				return this.audioPlayerCommand;
+				return this.ChatCommand;
 			}
 
 			set
 			{
-				if (!value.Equals(audioPlayerCommand))
+				if (!value.Equals(ChatCommand))
 				{
-					audioPlayerCommand = value;
-					RaisePropertyChanged (() => AudioPlayerCommand);
+					ChatCommand = value;
+					RaisePropertyChanged (() => ChatCommand);
 				}
 			}
 		}
@@ -138,9 +138,9 @@ namespace AudioPlayer.Portable.ViewModels
 				Close(this);
 			});
 
-			this.audioPlayerCommand = new MvxCommand(() =>
+			this.ChatCommand = new MvxCommand(() =>
 			{
-				ShowViewModel<AudioPlayerPageViewModel>();
+				ShowViewModel<ChatPageViewModel>();
 			});
 		}
 
