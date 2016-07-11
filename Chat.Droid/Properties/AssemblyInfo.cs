@@ -10,7 +10,7 @@ using Android.App;
 [assembly: AssemblyConfiguration ("")]
 [assembly: AssemblyCompany ("")]
 [assembly: AssemblyProduct ("")]
-[assembly: AssemblyCopyright ("mww121")]
+[assembly: AssemblyCopyright ("Flush Arcade")]
 [assembly: AssemblyTrademark ("")]
 [assembly: AssemblyCulture ("")]
 

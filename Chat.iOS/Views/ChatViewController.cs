@@ -18,24 +18,46 @@ namespace Chat.iOS.Views
 
 	using Chat.Common.Presenter;
 
+	/// <summary>
+	/// Chat view controller.
+	/// </summary>
 	public class ChatViewController : UIViewController, ChatPresenter.IChatView
 	{
 		#region Private Properties
 
+		/// <summary>
+		/// The presenter.
+		/// </summary>
 		private ChatPresenter _presenter;
 
+		/// <summary>
+		/// The chat field.
+		/// </summary>
 		private UITextField _chatField;
 
+		/// <summary>
+		/// The scroll view.
+		/// </summary>
 		private UIScrollView _scrollView;
 
+		/// <summary>
+		/// The current top.
+		/// </summary>
 		private int _currentTop = 20;
 
+		/// <summary>
+		/// The width.
+		/// </summary>
 		private nfloat _width;
 
 		#endregion
 
 		#region Constructors
 
+		/// <summary>
+		/// Initializes a new instance of the <see cref="T:Chat.iOS.Views.ChatViewController"/> class.
+		/// </summary>
+		/// <param name="presenter">Presenter.</param>
 		public ChatViewController(ChatPresenter presenter)
 		{
 			_presenter = presenter;
@@ -45,6 +67,10 @@ namespace Chat.iOS.Views
 
 		#region Public Methods
 
+		/// <summary>
+		/// Views the did load.
+		/// </summary>
+		/// <returns>The did load.</returns>
 		public override void ViewDidLoad()
 		{
 			base.ViewDidLoad();
@@ -67,6 +93,8 @@ namespace Chat.iOS.Views
 			_chatField = new UITextField()
 			{
 				TranslatesAutoresizingMaskIntoConstraints = false,
+				BackgroundColor = UIColor.Clear.FromHex("#DFE4E6"),
+				Placeholder = "Enter message"
 			};
 
 			_scrollView = new UIScrollView()
@@ -86,7 +114,7 @@ namespace Chat.iOS.Views
 			};
 
 			this.View.AddConstraints(
-				NSLayoutConstraint.FromVisualFormat("V:|-62-[chatField(60)]-[scrollView]|", NSLayoutFormatOptions.DirectionLeftToRight, null, views)
+				NSLayoutConstraint.FromVisualFormat("V:|-68-[chatField(60)]", NSLayoutFormatOptions.DirectionLeftToRight, null, views)
 				.Concat(NSLayoutConstraint.FromVisualFormat("V:|-62-[sendButton(60)]-20-[scrollView]|", NSLayoutFormatOptions.DirectionLeftToRight, null, views))
 				.Concat(NSLayoutConstraint.FromVisualFormat("H:|-5-[chatField]-[sendButton(60)]-5-|", NSLayoutFormatOptions.AlignAllTop, null, views))
 				.Concat(NSLayoutConstraint.FromVisualFormat("H:|[scrollView]|", NSLayoutFormatOptions.AlignAllTop, null, views))
@@ -97,6 +125,11 @@ namespace Chat.iOS.Views
 
 		#region IChatView implementation
 
+		/// <summary>
+		/// Notifies the chat message received.
+		/// </summary>
+		/// <returns>The chat message received.</returns>
+		/// <param name="message">Message.</param>
 		public void NotifyChatMessageReceived(string message)
 		{
 			InvokeOnMainThread(() => CreateChatBox(true, message));
@@ -106,6 +139,11 @@ namespace Chat.iOS.Views
 
 		#region IView implementation
 
+		/// <summary>
+		/// Sets the error message.
+		/// </summary>
+		/// <returns>The error message.</returns>
+		/// <param name="message">Message.</param>
 		public void SetErrorMessage(string message)
 		{
 			var alert = new UIAlertView()
@@ -117,26 +155,45 @@ namespace Chat.iOS.Views
 			alert.Show();
 		}
 
+		/// <summary>
+		/// Gets or sets the is in progress.
+		/// </summary>
+		/// <value>The is in progress.</value>
 		public bool IsInProgress { get; set; }
 
 		#endregion
 
-		#region Private Properties
+		#region Private Methods
 
+		/// <summary>
+		/// Handles the send button.
+		/// </summary>
+		/// <returns>The send button.</returns>
+		/// <param name="sender">Sender.</param>
+		/// <param name="e">E.</param>
 		private void HandleSendButton(object sender, EventArgs e)
 		{
 			_presenter.SendChat(_chatField.Text).ConfigureAwait(false);
 			CreateChatBox(false, _chatField.Text);
 		}
 
-		private void CreateChatBox(bool received, string message)
+		#endregion
+
+		#region Public Methods
+
+		/// <summary>
+		/// Creates the chat box.
+		/// </summary>
+		/// <returns>The chat box.</returns>
+		/// <param name="received">Received.</param>
+		/// <param name="message">Message.</param>
+		public void CreateChatBox(bool received, string message)
 		{
 			_scrollView.ContentSize = new CGSize(_width, _currentTop);
 
 			_scrollView.AddSubview(new ChatBoxView(message)
 			{
-				//Frame = new CGRect(received ? _width - 120 : 20, _currentTop, 100, 60),
-				Frame = new CGRect(20, _currentTop, 100, 60),
+				Frame = new CGRect(received ? _width - 120 : 20, _currentTop, 100, 60),
 				BackgroundColor = UIColor.Clear.FromHex(received ? "#4CD964" : "#5AC8FA")
 			});
 

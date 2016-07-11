@@ -85,18 +85,27 @@
     <Reference Include="Microsoft.AspNet.SignalR.Client">
       <HintPath>..\sigr\ios-unified\Microsoft.AspNet.SignalR.Client.dll</HintPath>
     </Reference>
-    <Reference Include="System.Net.Http.Extensions">
-      <HintPath>..\sigr\ios-unified\System.Net.Http.Extensions.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Net.Http.Primitives">
-      <HintPath>..\sigr\ios-unified\System.Net.Http.Primitives.dll</HintPath>
-    </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\packages\Newtonsoft.Json.8.0.3\lib\portable-net40+sl5+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="System.Net.Http.Primitives">
+      <HintPath>..\packages\Microsoft.Net.Http.2.2.29\lib\Xamarin.iOS10\System.Net.Http.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Extensions">
+      <HintPath>..\packages\Microsoft.Net.Http.2.2.29\lib\Xamarin.iOS10\System.Net.Http.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net" />
+    <Reference Include="System.Net.Http" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\Contents.json" />
+    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\Flush App Icon - 144px.png" />
+    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\Flush App Icon - 152px.png" />
+    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\Flush App Icon - 114px.png" />
+    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\Flush App Icon - 180px.png" />
+    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\Flush App Icon - 120px.png" />
+    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\Flush App Icon - 167px.png" />
+    <ImageAsset Include="Resources\Images.xcassets\AppIcons.appiconset\Flush App Icon - 87px.png" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Resources\LaunchScreen.xib" />
@@ -116,6 +125,7 @@
     <Compile Include="Services\NavigationService.cs" />
     <Compile Include="Views\ChatBoxView.cs" />
     <Compile Include="Extensions\ColorExtensions.cs" />
+    <Compile Include="Views\LoginViewController.cs" />
   </ItemGroup>
   <Import Project="..\Chat.ServiceAccess\Chat.ServiceAccess.projitems" Label="Shared" Condition="Exists('..\Chat.ServiceAccess\Chat.ServiceAccess.projitems')" />
   <Import Project="..\Chat.Common\Chat.Common.projitems" Label="Shared" Condition="Exists('..\Chat.Common\Chat.Common.projitems')" />
@@ -125,5 +135,9 @@
     <Folder Include="Extras\" />
     <Folder Include="Services\" />
     <Folder Include="Extensions\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ITunesArtwork Include="iTunesArtwork%402x" />
+    <ITunesArtwork Include="iTunesArtwork" />
   </ItemGroup>
 </Project>

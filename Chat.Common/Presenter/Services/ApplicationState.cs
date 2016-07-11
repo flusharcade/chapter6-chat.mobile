@@ -6,57 +6,25 @@
 
 namespace Chat.Common.Presenter
 {
-	using System.Collections.Generic;
-	using System;
-
-	using Chat.Common.Model;
-
+	/// <summary>
+	/// Application state.
+	/// </summary>
 	public class ApplicationState
 	{
-		#region Private Properties
-
-		private IApplicationStateService _applicationStateService;
-
-		#endregion
-
 		#region Public Properties
 
-		public IApplicationStateService ApplicationStateService
-		{
-			set 
-			{ 
-				_applicationStateService = value; 
-			}
-		}
+		/// <summary>
+		/// Gets or sets the access token.
+		/// </summary>
+		/// <value>The access token.</value>
+		public string AccessToken { get; set; }
 
-		public List<Client> ConnectedClients { get; set; }
-
-		#endregion
-
-		#region Constructors
-
-		public ApplicationState()
-		{
-			ConnectedClients = new List<Client>();
-		}
+		/// <summary>
+		/// Gets or sets the username.
+		/// </summary>
+		/// <value>The username.</value>
+		public string Username { get; set; }
 
 		#endregion
-
-		public ApplicationState(IApplicationStateService applicationStateService) : this()
-		{
-			_applicationStateService = applicationStateService;
-		}
-
-		public void UpdateConnectedClients(IEnumerable<Client> clients)
-		{
-			ConnectedClients.Clear();
-
-			_applicationStateService.SaveState(this);
-		}
-
-		private void SaveApplicationState()
-		{
-			_applicationStateService.SaveState(this);
-		}
 	}
 }

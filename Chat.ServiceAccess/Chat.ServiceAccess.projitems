@@ -9,6 +9,13 @@
     <Import_RootNamespace>Chat.ServiceAccess</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="$(MSBuildThisFileDirectory)SignalRClient.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Web\WebApiAccess.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)SignalR\SignalRClient.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Web\Contracts\TokenContract.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="$(MSBuildThisFileDirectory)Web\" />
+    <Folder Include="$(MSBuildThisFileDirectory)SignalR\" />
+    <Folder Include="$(MSBuildThisFileDirectory)Web\Contracts\" />
   </ItemGroup>
 </Project>

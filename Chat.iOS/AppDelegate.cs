@@ -14,22 +14,29 @@ namespace Chat.iOS
 
 	using Chat.Common.Presenter;
 
-	// The UIApplicationDelegate for the application. This class is responsible for launching the
-	// User Interface of the application, as well as listening (and optionally responding) to application events from iOS.
+	/// <summary>
+	/// App delegate.
+	/// </summary>
 	[Register ("AppDelegate")]
 	public partial class AppDelegate : UIApplicationDelegate
 	{
 		// class-level declarations
+		/// <summary>
+		/// The window.
+		/// </summary>
 		UIWindow _window;
+
+		/// <summary>
+		/// The navigation controller.
+		/// </summary>
 		UINavigationController _navigationController;
 
-		//
-		// This method is invoked when the application has loaded and is ready to run. In this 
-		// method you should instantiate the window, load the UI into it and then make the window
-		// visible.
-		//
-		// You have 17 seconds to return from this method, or iOS will terminate your application.
-		//
+		/// <summary>
+		/// Finisheds the launching.
+		/// </summary>
+		/// <returns>The launching.</returns>
+		/// <param name="app">App.</param>
+		/// <param name="options">Options.</param>
 		public override bool FinishedLaunching(UIApplication app, NSDictionary options)
 		{
 			_window = new UIWindow(UIScreen.MainScreen.Bounds);
@@ -38,11 +45,8 @@ namespace Chat.iOS
 
 			var state = new ApplicationState();
 
-			var presenter = new ClientsListPresenter(state, new NavigationService(_navigationController));
-			var controller = new ClientsListViewController(presenter);
-
-			//var presenter = new ChatPresenter(state, new NavigationService(_navigationController), new Common.Model.Client());
-			//var controller = new ChatViewController(presenter);
+			var presenter = new LoginPresenter(state, new NavigationService(_navigationController));
+			var controller = new LoginViewController(presenter);
 
 			_navigationController.PushViewController(controller, false);
 			_window.RootViewController = _navigationController;

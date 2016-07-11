@@ -2,28 +2,45 @@
 <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/tableLayout"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent">
+    android:layout_height="fill_parent"
+    android:background="#FFFFFF">
     <TableRow
         android:id="@+id/tableRow1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="fill_parent"
+        android:layout_height="100dp"
         android:padding="5dip">
         <EditText
-            android:id="@+id/editText1"
-            android:layout_span="2" />
+            android:id="@+id/chatField"
+            android:hint="Enter message"
+            android:textColor="#000000"
+            android:layout_weight="2"
+            android:layout_column="1" />
         <Button
             android:id="@+id/sendButton"
-            android:text="Column 2" />
+            android:text="Send"
+            android:textColor="#417BB5"
+            android:background="@android:color/transparent"
+            android:focusableInTouchMode="false"
+            android:layout_weight="1"
+            android:layout_column="3" />
     </TableRow>
     <TableRow
         android:id="@+id/tableRow2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="fill_parent"
+        android:layout_weight="1"
         android:padding="5dip">
         <ScrollView
             android:id="@+id/scrollView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:fillViewport="true" />
+            android:fillViewport="true"
+            android:layout_weight="2"
+            android:layout_span="4">
+            <LinearLayout
+                android:id="@+id/scrollViewInnerLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" />
+        </ScrollView>
     </TableRow>
 </TableLayout>

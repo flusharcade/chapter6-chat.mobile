@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>CFBundleName</key>
-	<string>AudioPlayer.iOS</string>
+	<string>Chat.iOS</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.flusharcade.testing</string>
+	<string>com.healthconnex.testing</string>
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
 	<key>CFBundleVersion</key>

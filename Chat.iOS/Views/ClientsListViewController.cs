@@ -9,9 +9,11 @@ namespace Chat.iOS.Views
 	using System;
 	using System.Collections.Generic;
 	using System.Linq;
+	using System.Threading.Tasks;
 
 	using UIKit;
 	using CoreGraphics;
+	using Foundation;
 
 	using Chat.iOS.Extras;
 
@@ -55,6 +57,10 @@ namespace Chat.iOS.Views
 		{
 			base.ViewDidLoad();
 
+			// Perform any additional setup after loading the view, typically from a nib.
+			UIBarButtonItem backButton = new UIBarButtonItem("< Back", UIBarButtonItemStyle.Bordered, HandleSignout);
+			NavigationItem.SetLeftBarButtonItem(backButton, false);
+
 			View.BackgroundColor = UIColor.White;
 
 			_presenter.SetView(this);
@@ -62,12 +68,12 @@ namespace Chat.iOS.Views
 			var width = View.Bounds.Width;
 			var height = View.Bounds.Height;
 
-			Title = "Welcome";
+			Title = "Clients";
 
 			var titleLabel = new UILabel()
 			{
 				TranslatesAutoresizingMaskIntoConstraints = false,
-				Text = "Welcome to the Chat Room",
+				Text = "Connected Clients",
 				Font = UIFont.FromName("Helvetica-Bold", 22),
 				TextAlignment = UITextAlignment.Center
 			};
@@ -98,12 +104,37 @@ namespace Chat.iOS.Views
 				{"tableView", _tableView},
 			};
 
-			this.View.AddConstraints(
+			View.AddConstraints(
 				NSLayoutConstraint.FromVisualFormat("V:|-100-[titleLabel(30)]-[descriptionLabel(30)]-[tableView]|", NSLayoutFormatOptions.DirectionLeftToRight, null, views)
 				.Concat(NSLayoutConstraint.FromVisualFormat("H:|[tableView]|", NSLayoutFormatOptions.AlignAllTop, null, views))
 				.Concat(NSLayoutConstraint.FromVisualFormat("H:|-10-[titleLabel]-10-|", NSLayoutFormatOptions.AlignAllTop, null, views))
 				.Concat(NSLayoutConstraint.FromVisualFormat("H:|-10-[descriptionLabel]-10-|", NSLayoutFormatOptions.AlignAllTop, null, views))
 				.ToArray());
+		}
+
+		public async void HandleSignout(object sender, EventArgs e)
+		{
+			bool accepted = await ShowAlert("Chat", "Would you like to signout?");
+
+			if (accepted)
+			{
+				_presenter.Signout();
+			}
+		}
+
+		public Task<bool> ShowAlert(string title, string message)
+		{
+			var tcs = new TaskCompletionSource<bool>();
+
+			UIApplication.SharedApplication.InvokeOnMainThread(new Action(() =>
+			{
+				UIAlertView alert = new UIAlertView(title, message, null, NSBundle.MainBundle.LocalizedString("Cancel", "Cancel"),
+									NSBundle.MainBundle.LocalizedString("OK", "OK"));
+				alert.Clicked += (sender, buttonArgs) => tcs.SetResult(buttonArgs.ButtonIndex != alert.CancelButtonIndex);
+				alert.Show();
+			}));
+
+			return tcs.Task;
 		}
 
 		#endregion
@@ -114,15 +145,15 @@ namespace Chat.iOS.Views
 
 		public void NotifyConnectedClientsUpdated(IEnumerable<Client> clients)
 		{
-			if (_source != null)
+			InvokeOnMainThread(() =>
 			{
 				IsInProgress = true;
 
 				_source.UpdateClients(clients);
-				InvokeOnMainThread(() => _tableView.ReloadData());
+				_tableView.ReloadData();
 
-				IsInProgress = false;
-			}
+				IsInProgress = false;					
+			});
 		}
 
 		#endregion

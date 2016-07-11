@@ -8,8 +8,19 @@ namespace Chat.Common.Model
 {
 	using System;
 
+	/// <summary>
+	/// Client.
+	/// </summary>
 	public class Client
 	{
-		public string ConnectedId;
+		#region Public Properties
+
+		/// <summary>
+		/// Gets or sets the username.
+		/// </summary>
+		/// <value>The username.</value>
+		public string Username { get; set; }
+
+		#endregion
 	}
 }

@@ -17,15 +17,14 @@
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)Presenter\Services\INavigationService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Presenter\ClientsListPresenter.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Model\Client.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Presenter\Services\ApplicationState.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Presenter\Services\IApplicationStateService.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Model\ClientBase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Events\ClientSelectedEventArgs.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Presenter\ChatPresenter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Presenter\IView.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Presenter\BasePresenter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Events\ConnectedClientsUpdatedEventArgs.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Events\ChatEventArgs.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Presenter\LoginPresenter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Model\Client.cs" />
   </ItemGroup>
 </Project>

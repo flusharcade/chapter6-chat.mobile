@@ -10,8 +10,20 @@ using UIKit;
 
 namespace Chat.iOS.Extensions
 {
+	/// <summary>
+	/// UIC olor extensions.
+	/// </summary>
 	public static class UIColorExtensions
 	{
+		#region Methods
+
+		/// <summary>
+		/// Froms the hex.
+		/// </summary>
+		/// <returns>The hex.</returns>
+		/// <param name="color">Color.</param>
+		/// <param name="hexValue">Hex value.</param>
+		/// <param name="alpha">Alpha.</param>
 		public static UIColor FromHex(this UIColor color, string hexValue, float alpha = 1.0f)
 		{
 			var colorString = hexValue.Replace("#", "");
@@ -49,5 +61,7 @@ namespace Chat.iOS.Extensions
 
 			}
 		}
+
+		#endregion
 	}
 }
