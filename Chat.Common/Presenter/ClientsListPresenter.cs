@@ -85,6 +85,15 @@ namespace Chat.Common.Presenter
 		}
 
 		/// <summary>
+		/// Releases the view.
+		/// </summary>
+		/// <returns>The view.</returns>
+		public void ReleaseView()
+		{
+			_signalRClient.OnDataReceived -= HandleSignalRDataReceived;
+		}
+
+		/// <summary>
 		/// Signout this instance.
 		/// </summary>
 		public void Signout()

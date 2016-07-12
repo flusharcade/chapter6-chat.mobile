@@ -90,6 +90,20 @@ namespace Chat.Droid.Views
 			app.CurrentActivity = this;
 		}
 
+		/// <summary>
+		/// Ons the pause.
+		/// </summary>
+		/// <returns>The pause.</returns>
+		protected override void OnPause()
+		{
+			base.OnPause();
+
+			if (_presenter != null)
+			{
+				_presenter.ReleaseView();
+			}
+		}
+
 		#endregion
 
 		#region IChatView implementation

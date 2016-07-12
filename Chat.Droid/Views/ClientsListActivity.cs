@@ -162,6 +162,20 @@ namespace Chat.Droid.Views
 		}
 
 		/// <summary>
+		/// Ons the pause.
+		/// </summary>
+		/// <returns>The pause.</returns>
+		protected override void OnPause()
+		{
+			base.OnPause();
+
+			if (_presenter != null)
+			{
+				_presenter.ReleaseView();
+			}
+		}
+
+		/// <summary>
 		/// Ons the list item click.
 		/// </summary>
 		/// <returns>The list item click.</returns>

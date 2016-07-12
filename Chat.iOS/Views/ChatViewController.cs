@@ -121,6 +121,17 @@ namespace Chat.iOS.Views
 				.ToArray());
 		}
 
+		/// <summary>
+		/// Called when view is disposed.
+		/// </summary>
+		/// <returns>The did unload.</returns>
+		public override void ViewDidUnload()
+		{
+			base.ViewDidUnload();
+
+			_presenter.ReleaseView();
+		}
+
 		#endregion
 
 		#region IChatView implementation
